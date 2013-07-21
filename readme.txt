@@ -21,6 +21,10 @@ Adds a new tab to the debug bar which shows all the screen info for the current 
 1. Upload directory `debug-bar-screen-info` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
+== Screenshots ==
+
+1. New Screen Info Tab
+
 == Changelog ==
 
 = 1.0.0 =
