@@ -1,0 +1,138 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Debug Bar Screen Object - a WordPress Plugin\n"
+"POT-Creation-Date: 2013-12-01 05:49+0100\n"
+"PO-Revision-Date: 2013-12-01 06:09+0100\n"
+"Last-Translator: EJ Reinders Folmer <poedit_nospam@adviesenzo.nl>\n"
+"Language-Team: Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>\n"
+"Language: Dutch (nl_NL)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: __;esc_html__;esc_html_e;esc_attr__;esc_attr_e;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../class-debug-bar-screen-info.php:78
+msgid "Screen Info"
+msgstr "Scherm info"
+
+#: ../class-debug-bar-screen-info.php:86
+msgid "The unique ID of the screen."
+msgstr "Het unieke id van het scherm."
+
+#: ../class-debug-bar-screen-info.php:87
+msgid "Any action associated with the screen."
+msgstr "Acties geassocieerd met het scherm."
+
+#: ../class-debug-bar-screen-info.php:88
+msgid ""
+"The base type of the screen. This is typically the same as id but with any "
+"post types and taxonomies stripped."
+msgstr ""
+"Het basis type van het scherm. Dit is typisch hetzelfde als het id, maar dan "
+"ontdaan van post typen en taxonomiën."
+
+#: ../class-debug-bar-screen-info.php:89
+msgid "Whether this is a multi-site network admin screen."
+msgstr "Of dit een multi-site netwerk admin scherm is."
+
+#: ../class-debug-bar-screen-info.php:90
+msgid "Whether this is a user admin screen."
+msgstr "Of dit een gebruiker admin scherm is."
+
+#: ../class-debug-bar-screen-info.php:91
+msgid "The base menu parent."
+msgstr "De base menu voorouder."
+
+#: ../class-debug-bar-screen-info.php:92
+msgid "The parent_file for the screen per the admin menu system."
+msgstr "Het parent_bestand voor het scherm zoals per het admin menu systeem."
+
+#: ../class-debug-bar-screen-info.php:93
+msgid "The post type associated with the screen, if any."
+msgstr "Het post type dat met het scherm geassocieerd is, als dat er is."
+
+#: ../class-debug-bar-screen-info.php:94
+msgid "The taxonomy associated with the screen, if any."
+msgstr "De taxonomie geassocieerd met het scherm, als dat er is."
+
+#: ../class-debug-bar-screen-info.php:106
+msgid "Screen:"
+msgstr "Scherm:"
+
+#: ../class-debug-bar-screen-info.php:107
+msgid "Properties:"
+msgstr "Eigenschappen:"
+
+#: ../class-debug-bar-screen-info.php:116
+msgid "Property"
+msgstr "Eigenschap"
+
+#: ../class-debug-bar-screen-info.php:117
+msgid "Value"
+msgstr "Waarde"
+
+#: ../class-debug-bar-screen-info.php:118
+msgid "Significance"
+msgstr "Significantie"
+
+#: ../class-debug-bar-screen-info.php:137
+msgid "Object"
+msgstr "Object"
+
+#: ../class-debug-bar-screen-info.php:165
+msgid "No Screen Info Found"
+msgstr "Geen scherm information gevonden."
+
+#: ../class-debug-bar-screen-info.php:168
+#, php-format
+msgid "For more information, see the %sCodex on WP_Screen"
+msgstr "Voor meer informatie, zie de %sCodex over WP_Screen"
+
+#: ../class-debug-bar-screen-info.php:168
+msgid "View the WordPress codex on WP Screen"
+msgstr "Lees de WordPress codex over WP Screen"
+
+#~ msgid "WP Screen"
+#~ msgstr "WP Screen"
+
+#~ msgid "WP Post Types"
+#~ msgstr "WP Post Types"
+
+#~ msgid "Post Type Properties:"
+#~ msgstr "Post Type Eigenschappen:"
+
+#~ msgid "Post Type Capabilities:"
+#~ msgstr "Post Type Capaciteiten:"
+
+#~ msgid "Capability"
+#~ msgstr "Capaciteit"
+
+#~ msgid "Has capability"
+#~ msgstr "Heeft capaciteit"
+
+#~ msgid "Does not have capability"
+#~ msgstr "Heeft capaciteit niet"
+
+#~ msgid "No post types found."
+#~ msgstr "Geen post-types gevonden."
+
+#~ msgid "Methods:"
+#~ msgstr "Methoden:"
+
+#~ msgid "Object Properties:"
+#~ msgstr "Object Eigenschappen:"
+
+#~ msgid "Object Methods:"
+#~ msgstr "Object Methoden:"
+
+#~ msgid ""
+#~ "Debug Bar must be activated to use the Debug Bar WP Objects Plugin. <a "
+#~ "href=\"%s\">Visit your plugins page to activate</a>."
+#~ msgstr ""
+#~ "Debug Bar moet geactiveerd zijn om de Debug Bar WP Objects Plugin te "
+#~ "kunnen gebruiken. <a href=\"%s\">Ga naar de plugins pagina om deze te "
+#~ "activeren</a>."
