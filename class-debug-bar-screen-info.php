@@ -5,7 +5,7 @@
  * @package		WordPress\Plugins\debug-bar-screen-info
  * @author		Brad Vincent <brad@fooplugins.com>
  * @link		https://github.com/fooplugins/debug-bar-screen-info
- * @version		1.1.0
+ * @version		1.1.1
  * @copyright	2013 FooPlugins LLC
  * @license		http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  */
@@ -18,7 +18,7 @@ class Debug_Bar_Admin_Screen_Info {
 	 *
 	 * @var     string
 	 */
-	protected $version = '1.1.0';
+	protected $version = '1.1.1';
 
 	/**
 	 * Unique identifier for your plugin.
@@ -82,6 +82,64 @@ class Debug_Bar_Admin_Screen_Info {
 
 
 	public function screen_info_render() {
+
+		$screen = get_current_screen();
+
+		if ( isset( $screen ) && is_object( $screen ) ) {
+
+			$properties = get_object_vars( $screen );
+
+			if ( is_array( $properties ) && $properties !== array() ) {
+				
+				$output = '
+		<h2><span>' . esc_html__( 'Screen:', $this->plugin_slug ) . '</span>' . esc_html( $screen->id ) . '</h2>
+		<h2><span>' . esc_html__( 'Properties:', $this->plugin_slug ) . '</span>' . count( $properties ) . '</h2>';
+
+
+				uksort( $properties, 'strnatcasecmp' );
+				
+				if ( ! class_exists( 'Debug_Bar_Pretty_Output' ) ) {
+					require_once plugin_dir_path( __FILE__ ) . 'inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php';
+				}
+
+				if( defined( 'Debug_Bar_Pretty_Output::VERSION' ) ) {
+					add_filter( 'db_pretty_output_table_header', array( $this, 'filter_pretty_output_table_header_row' ) );
+					add_filter( 'db_pretty_output_table_body_row', array( $this, 'filter_pretty_output_table_body_row' ), 10, 2 );
+
+					$output .= Debug_Bar_Pretty_Output::get_table( $properties, __( 'Property', $this->plugin_slug ), __( 'Value', $this->plugin_slug ), $this->plugin_slug );
+
+					remove_filter( 'db_pretty_output_table_header', array( $this, 'filter_pretty_output_table_header_row' ) );
+					remove_filter( 'db_pretty_output_table_body_row', array( $this, 'filter_pretty_output_table_body_row' ), 10, 2 );
+				}
+				else {
+					/* An old version of the pretty output class was loaded,
+					   the explanations will not be added to the table */
+					ob_start();
+					Debug_Bar_Pretty_Output::render_table( $properties, __( 'Property', $this->plugin_slug ), __( 'Value', $this->plugin_slug ), $this->plugin_slug );
+					$output .= ob_get_contents();
+					ob_end_clean();
+				}
+			}
+		}
+		else {
+			$output = '<h2>' . esc_html__( 'No Screen Info Found', $this->plugin_slug ) . '</h2>';
+		}
+		
+		$output .= '<p>' . sprintf( esc_html__( 'For more information, see the %sCodex on WP_Screen', $this->plugin_slug ), '<a href="http://codex.wordpress.org/Class_Reference/WP_Screen" target="_blank" title="' . esc_attr__( 'View the WordPress codex on WP Screen', $this->plugin_slug ) . '">' ) . '</a></p>';
+
+		return $output;
+	}
+	
+	
+	function filter_pretty_output_table_header_row( $row ) {
+		$replace = '	<th>' . esc_html__( 'Significance', $this->plugin_slug ) . '</th>
+			</tr>';
+		$row = str_replace( '</tr>', $replace, $row );
+
+		return $row;
+	}
+
+	function filter_pretty_output_table_body_row( $row, $key ) {
 		$explain = array(
 			'id'			=>	__( 'The unique ID of the screen.', $this->plugin_slug ),
 			'action'		=>	__( 'Any action associated with the screen.', $this->plugin_slug ),
@@ -93,80 +151,13 @@ class Debug_Bar_Admin_Screen_Info {
 			'post_type'		=>	__( 'The post type associated with the screen, if any.', $this->plugin_slug ),
 			'taxonomy'		=>	__( 'The taxonomy associated with the screen, if any.', $this->plugin_slug ),
 		);
-
-		$screen = get_current_screen();
-
-		if ( isset( $screen ) && is_object( $screen ) ) {
-			
-			$properties = get_object_vars( $screen );
-
-			if ( is_array( $properties ) && $properties !== array() ) {
-				
-				$output = '
-		<h2><span>' . esc_html__( 'Screen:', $this->plugin_slug ) . '</span>' . esc_html( $screen->id ) . '</h2>
-		<h2><span>' . esc_html__( 'Properties:', $this->plugin_slug ) . '</span>' . count( $properties ) . '</h2>';
-
-
-				uksort( $properties, 'strnatcasecmp' );
-
-				$output .= '
-		<table class="debug-bar-table ' . esc_attr( $this->plugin_slug ) . '">
-			<thead>
-			<tr>
-				<th>' . esc_html__( 'Property', $this->plugin_slug ) . '</th>
-				<th>' . esc_html__( 'Value', $this->plugin_slug ) . '</th>
-				<th>' . esc_html__( 'Significance', $this->plugin_slug ) . '</th>
-			</tr>
-			</thead>
-			<tbody>';
-			
-				foreach ( $properties as $key => $value ) {
-					$output .= '
-			<tr>
-				<th>' . esc_html( $key ) . '</th>
-				<td>';
-
-					if ( is_object( $value ) ) {
-						if ( class_exists( 'Debug_Bar_Pretty_Output' ) ) {
-							ob_start();
-							Debug_Bar_Pretty_Output::ooutput( $value, $this->plugin_slug, true );
-							$output .= ob_get_contents();
-							ob_end_clean();
-						}
-						else {
-							$output .= '(' . __( 'Object', $this->plugin_slug ) . ')';
-						}
-					}
-					else {
-						if ( class_exists( 'Debug_Bar_Pretty_Output' ) ) {
-							ob_start();
-							Debug_Bar_Pretty_Output::output( $value, '', true, '', false, $this->plugin_slug );
-							$output .= ob_get_contents();
-							ob_end_clean();
-						}
-						else {
-							$output .= '<strong>' . esc_html( $value ) . '</strong>';
-						}
-					}
-
-					$output .= '</td>
-				<td class="' . esc_attr( $this->plugin_slug ) . '-explain">' . ( isset( $explain[$key] ) ? esc_html( $explain[$key] ) : '&nbsp;' ) . '
+		
+		$replace = '	<td class="' . esc_attr( $this->plugin_slug ) . '-explain">' . ( isset( $explain[$key] ) ? esc_html( $explain[$key] ) : '&nbsp;' ) . '
 				</td>
 			</tr>';
-				}
+		$row = str_replace( '</tr>', $replace, $row );
 
-				$output .= '
-			</tbody>
-		</table>
-';
-			}
-		}
-		else {
-			$output = '<h2>' . esc_html__( 'No Screen Info Found', $this->plugin_slug ) . '</h2>';
-		}
-		
-		$output .= '<p>' . sprintf( esc_html__( 'For more information, see the %sCodex on WP_Screen', $this->plugin_slug ), '<a href="http://codex.wordpress.org/Class_Reference/WP_Screen" target="_blank" title="' . esc_attr__( 'View the WordPress codex on WP Screen', $this->plugin_slug ) . '">' ) . '</a></p>';
-
-		return $output;
+		return $row;
 	}
+
 }

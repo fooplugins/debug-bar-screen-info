@@ -3,7 +3,7 @@ Contributors: bradvin, jrf
 Tags: debug bar, debug, screen id, get_current_screen, WP_Screen, Screen Object
 Requires at least: 3.5.1
 Tested up to: 3.8.0-beta
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 Depends: debug-bar
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -59,6 +59,9 @@ Have you read what it says in the beautiful red bar at the top of your plugins p
 
 == Changelog ==
 
+= 1.1.1 =
+* Variable values are now pretty printed with type indication by default.
+
 = 1.1.0 =
 * Merge with [Jrf](http://profiles.wordpress.org/jrf/)'s version of the same:
 	- Now displays all available properties
@@ -74,6 +77,9 @@ Have you read what it says in the beautiful red bar at the top of your plugins p
 
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+* Upgrade highly recommended - multi-plugin compatibility issue
 
 = 1.1.0 =
 * Merge with [Jrf](http://profiles.wordpress.org/jrf/)'s version of the same
