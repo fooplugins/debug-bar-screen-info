@@ -102,7 +102,7 @@ class Debug_Bar_Admin_Screen_Info {
 					require_once plugin_dir_path( __FILE__ ) . 'inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php';
 				}
 
-				if( defined( 'Debug_Bar_Pretty_Output::VERSION' ) ) {
+				if ( defined( 'Debug_Bar_Pretty_Output::VERSION' ) ) {
 					add_filter( 'db_pretty_output_table_header', array( $this, 'filter_pretty_output_table_header_row' ) );
 					add_filter( 'db_pretty_output_table_body_row', array( $this, 'filter_pretty_output_table_body_row' ), 10, 2 );
 
@@ -134,7 +134,7 @@ class Debug_Bar_Admin_Screen_Info {
 	function filter_pretty_output_table_header_row( $row ) {
 		$replace = '	<th>' . esc_html__( 'Significance', $this->plugin_slug ) . '</th>
 			</tr>';
-		$row = str_replace( '</tr>', $replace, $row );
+		$row     = str_replace( '</tr>', $replace, $row );
 
 		return $row;
 	}
@@ -155,7 +155,7 @@ class Debug_Bar_Admin_Screen_Info {
 		$replace = '	<td class="' . esc_attr( $this->plugin_slug ) . '-explain">' . ( isset( $explain[$key] ) ? esc_html( $explain[$key] ) : '&nbsp;' ) . '
 				</td>
 			</tr>';
-		$row = str_replace( '</tr>', $replace, $row );
+		$row     = str_replace( '</tr>', $replace, $row );
 
 		return $row;
 	}
