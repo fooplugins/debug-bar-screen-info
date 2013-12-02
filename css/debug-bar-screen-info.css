@@ -11,8 +11,14 @@
 #debug-menu-target-Debug_Bar_Screen_Info_Panel .debug-bar-screen-info thead th,
 #debug-menu-target-Debug_Bar_Screen_Info_Panel .debug-bar-screen-info tfoot th {
     padding: 0.7em 5px;
+}
+#debug-menu-target-Debug_Bar_Screen_Info_Panel .debug-bar-screen-info thead th {
     border-bottom: 1px solid #ccc;
 }
+#debug-menu-target-Debug_Bar_Screen_Info_Panel .debug-bar-screen-info tfoot th {
+    border-top: 1px solid #ccc;
+}
+
 
 #debug-menu-target-Debug_Bar_Screen_Info_Panel .debug-bar-screen-info th {
 	min-width: 100px;
