@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Debug Bar Screen Object - a WordPress Plugin\n"
-"POT-Creation-Date: 2013-12-01 05:49+0100\n"
-"PO-Revision-Date: 2013-12-01 06:09+0100\n"
+"POT-Creation-Date: 2013-12-02 07:09+0100\n"
+"PO-Revision-Date: 2013-12-02 07:11+0100\n"
 "Last-Translator: EJ Reinders Folmer <poedit_nospam@adviesenzo.nl>\n"
 "Language-Team: Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>\n"
 "Language: Dutch (nl_NL)\n"
@@ -19,15 +19,54 @@ msgstr ""
 msgid "Screen Info"
 msgstr "Scherm info"
 
-#: ../class-debug-bar-screen-info.php:86
+#: ../class-debug-bar-screen-info.php:95
+msgid "Screen:"
+msgstr "Scherm:"
+
+#: ../class-debug-bar-screen-info.php:96
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:254
+msgid "Properties:"
+msgstr "Eigenschappen:"
+
+#: ../class-debug-bar-screen-info.php:109
+#: ../class-debug-bar-screen-info.php:118
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:270
+msgid "Property"
+msgstr "Eigenschap"
+
+#: ../class-debug-bar-screen-info.php:109
+#: ../class-debug-bar-screen-info.php:118
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:270
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:319
+msgid "Value"
+msgstr "Waarde"
+
+#: ../class-debug-bar-screen-info.php:125
+msgid "No Screen Info Found"
+msgstr "Geen scherm information gevonden."
+
+#: ../class-debug-bar-screen-info.php:128
+#, php-format
+msgid "For more information, see the %sCodex on WP_Screen"
+msgstr "Voor meer informatie, zie de %sCodex over WP_Screen"
+
+#: ../class-debug-bar-screen-info.php:128
+msgid "View the WordPress codex on WP Screen"
+msgstr "Lees de WordPress codex over WP Screen"
+
+#: ../class-debug-bar-screen-info.php:135
+msgid "Significance"
+msgstr "Significantie"
+
+#: ../class-debug-bar-screen-info.php:144
 msgid "The unique ID of the screen."
 msgstr "Het unieke id van het scherm."
 
-#: ../class-debug-bar-screen-info.php:87
+#: ../class-debug-bar-screen-info.php:145
 msgid "Any action associated with the screen."
 msgstr "Acties geassocieerd met het scherm."
 
-#: ../class-debug-bar-screen-info.php:88
+#: ../class-debug-bar-screen-info.php:146
 msgid ""
 "The base type of the screen. This is typically the same as id but with any "
 "post types and taxonomies stripped."
@@ -35,66 +74,75 @@ msgstr ""
 "Het basis type van het scherm. Dit is typisch hetzelfde als het id, maar dan "
 "ontdaan van post typen en taxonomiën."
 
-#: ../class-debug-bar-screen-info.php:89
+#: ../class-debug-bar-screen-info.php:147
 msgid "Whether this is a multi-site network admin screen."
 msgstr "Of dit een multi-site netwerk admin scherm is."
 
-#: ../class-debug-bar-screen-info.php:90
+#: ../class-debug-bar-screen-info.php:148
 msgid "Whether this is a user admin screen."
 msgstr "Of dit een gebruiker admin scherm is."
 
-#: ../class-debug-bar-screen-info.php:91
+#: ../class-debug-bar-screen-info.php:149
 msgid "The base menu parent."
 msgstr "De base menu voorouder."
 
-#: ../class-debug-bar-screen-info.php:92
+#: ../class-debug-bar-screen-info.php:150
 msgid "The parent_file for the screen per the admin menu system."
 msgstr "Het parent_bestand voor het scherm zoals per het admin menu systeem."
 
-#: ../class-debug-bar-screen-info.php:93
+#: ../class-debug-bar-screen-info.php:151
 msgid "The post type associated with the screen, if any."
 msgstr "Het post type dat met het scherm geassocieerd is, als dat er is."
 
-#: ../class-debug-bar-screen-info.php:94
+#: ../class-debug-bar-screen-info.php:152
 msgid "The taxonomy associated with the screen, if any."
 msgstr "De taxonomie geassocieerd met het scherm, als dat er is."
 
-#: ../class-debug-bar-screen-info.php:106
-msgid "Screen:"
-msgstr "Scherm:"
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:81
+msgid "unknown"
+msgstr ""
 
-#: ../class-debug-bar-screen-info.php:107
-msgid "Properties:"
-msgstr "Eigenschappen:"
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:115
+msgid "undetermined"
+msgstr ""
 
-#: ../class-debug-bar-screen-info.php:116
-msgid "Property"
-msgstr "Eigenschap"
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:171
+msgid "I haven't got a clue what this is: "
+msgstr ""
 
-#: ../class-debug-bar-screen-info.php:117
-msgid "Value"
-msgstr "Waarde"
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:258
+msgid "Methods:"
+msgstr ""
 
-#: ../class-debug-bar-screen-info.php:118
-msgid "Significance"
-msgstr "Significantie"
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:266
+msgid "Object Properties:"
+msgstr ""
 
-#: ../class-debug-bar-screen-info.php:137
-msgid "Object"
-msgstr "Object"
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:277
+msgid "Object Methods:"
+msgstr ""
 
-#: ../class-debug-bar-screen-info.php:165
-msgid "No Screen Info Found"
-msgstr "Geen scherm information gevonden."
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:317
+msgid "Key"
+msgstr ""
 
-#: ../class-debug-bar-screen-info.php:168
-#, php-format
-msgid "For more information, see the %sCodex on WP_Screen"
-msgstr "Voor meer informatie, zie de %sCodex over WP_Screen"
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:435
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:454
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:471
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:489
+msgid "or even better: upgrade your Debug Bar plugins to their current version"
+msgstr ""
 
-#: ../class-debug-bar-screen-info.php:168
-msgid "View the WordPress codex on WP Screen"
-msgstr "Lees de WordPress codex over WP Screen"
+#~ msgid "Object"
+#~ msgstr "Object"
 
 #~ msgid "WP Screen"
 #~ msgstr "WP Screen"
@@ -119,15 +167,6 @@ msgstr "Lees de WordPress codex over WP Screen"
 
 #~ msgid "No post types found."
 #~ msgstr "Geen post-types gevonden."
-
-#~ msgid "Methods:"
-#~ msgstr "Methoden:"
-
-#~ msgid "Object Properties:"
-#~ msgstr "Object Eigenschappen:"
-
-#~ msgid "Object Methods:"
-#~ msgstr "Object Methoden:"
 
 #~ msgid ""
 #~ "Debug Bar must be activated to use the Debug Bar WP Objects Plugin. <a "
