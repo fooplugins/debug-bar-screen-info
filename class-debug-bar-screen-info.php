@@ -5,7 +5,7 @@
  * @package		WordPress\Plugins\debug-bar-screen-info
  * @author		Brad Vincent <brad@fooplugins.com>
  * @link		https://github.com/fooplugins/debug-bar-screen-info
- * @version		1.1.1
+ * @version		1.1.2
  * @copyright	2013 FooPlugins LLC
  * @license		http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  */
@@ -82,6 +82,13 @@ class Debug_Bar_Admin_Screen_Info {
 
 
 	public function screen_info_render() {
+
+		/* Set parentage of current page
+		   Isn't set yet as it is set from admin_header.php which is run after the admin bar has loaded
+		   on the admin side */
+		if ( ( isset( $GLOBALS['current_screen'] ) && is_object( $GLOBALS['current_screen'] ) ) && ( isset( $GLOBALS['parent_file'] ) && is_string( $GLOBALS['parent_file'] ) && $GLOBALS['parent_file'] !== '' ) ) {
+			$GLOBALS['current_screen']->set_parentage( $GLOBALS['parent_file'] );
+		}
 
 		$screen = get_current_screen();
 
