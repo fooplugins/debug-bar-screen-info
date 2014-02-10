@@ -2,7 +2,7 @@
 Contributors: bradvin, jrf
 Tags: debug bar, debug, screen id, get_current_screen, WP_Screen, Screen Object
 Requires at least: 3.5.1
-Tested up to: 3.8.0-beta
+Tested up to: 3.8.1
 Stable tag: 1.1.2
 Depends: debug-bar
 License: GPLv2 or later

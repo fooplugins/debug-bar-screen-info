@@ -16,7 +16,7 @@
  * Plugin URI:  https://github.com/fooplugins/debug-bar-screen-info
  * Description: Show screen info of the current admin page in a new tab within the debug bar
  * Version:     1.1.2
- * Author:      bradvin
+ * Author:      bradvin, jrf
  * Author URI:  http://fooplugins.com
  * Text Domain: debug-bar-screen-info
  * Domain Path: /languages/
