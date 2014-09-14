@@ -2,9 +2,8 @@
 Contributors: bradvin, jrf
 Tags: debug bar, debug, screen id, get_current_screen, WP_Screen, Screen Object
 Requires at least: 3.5.1
-Tested up to: 3.8.1
+Tested up to: 4.0
 Stable tag: 1.1.2
-Depends: debug-bar
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +57,9 @@ Have you read what it says in the beautiful red bar at the top of your plugins p
 
 
 == Changelog ==
+
+= Trunk =
+* Fix compatibility with the [Plugin Dependencies](http://wordpress.org/plugins/plugin-dependencies/) plugin
 
 = 1.1.2 =
 * Fix for parentage not being set as admin bar is loaded too early - [issue #5](https://github.com/fooplugins/debug-bar-screen-info/issues/5). Thanks [grappler](https://github.com/grappler) for reporting.

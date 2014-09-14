@@ -18,6 +18,7 @@
  * Version:     1.1.2
  * Author:      bradvin, jrf
  * Author URI:  http://fooplugins.com
+ * Depends:     Debug Bar
  * Text Domain: debug-bar-screen-info
  * Domain Path: /languages/
  * License:     GPL-2.0+
