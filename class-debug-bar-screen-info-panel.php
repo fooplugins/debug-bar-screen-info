@@ -9,6 +9,7 @@
  * @copyright	2013 FooPlugins LLC
  * @license		http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  */
+
 class Debug_Bar_Screen_Info_Panel extends Debug_Bar_Panel {
 
 	private $tab_name;
