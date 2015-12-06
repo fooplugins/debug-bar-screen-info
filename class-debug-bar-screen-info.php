@@ -5,45 +5,47 @@
  * @package		WordPress\Plugins\debug-bar-screen-info
  * @author		Brad Vincent <brad@fooplugins.com>
  * @link		https://github.com/fooplugins/debug-bar-screen-info
- * @version		1.1.3
+ * @version		1.1.4
  * @copyright	2013 FooPlugins LLC
  * @license		http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  */
+
 class Debug_Bar_Admin_Screen_Info {
 
 	/**
 	 * Plugin version, used for cache-busting of style and script file references.
 	 *
-	 * @since   1.0.0
-	 *
 	 * @var     string
+	 *
+	 * @since   1.0.0
 	 */
 	protected $version = '1.1.1';
 
 	/**
 	 * Unique identifier for your plugin.
 	 *
-	 * @since    1.0.0
-	 *
 	 * @var      string
+	 *
+	 * @since    1.0.0
 	 */
 	protected $plugin_slug = 'debug-bar-screen-info';
 
 	/**
 	 * Instance of this class.
 	 *
-	 * @since    1.0.0
-	 *
 	 * @var      object
+	 *
+	 * @since    1.0.0
 	 */
 	protected static $instance = null;
+
 
 	/**
 	 * Return an instance of this class.
 	 *
-	 * @since     1.0.0
-	 *
 	 * @return    object    A single instance of this class.
+	 *
+	 * @since     1.0.0
 	 */
 	public static function get_instance() {
 
@@ -55,8 +57,9 @@ class Debug_Bar_Admin_Screen_Info {
 		return self::$instance;
 	}
 
+
 	/**
-	 * Initialize the plugin
+	 * Initialize the plugin.
 	 *
 	 * @since     1.0.0
 	 */
@@ -65,15 +68,27 @@ class Debug_Bar_Admin_Screen_Info {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 	}
 
+
+	/**
+	 * Enqueue scripts.
+	 */
 	public function enqueue_scripts() {
 		$suffix = ( ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min' );
 		wp_enqueue_style( $this->plugin_slug, plugins_url( 'css/debug-bar-screen-info' . $suffix . '.css', __FILE__ ), array( 'debug-bar' ), $this->version );
 		unset( $suffix );
 	}
 
+
+	/**
+	 * Create the screen info debug bar tab.
+	 *
+	 * @param array $panels
+	 *
+	 * @return array
+	 */
 	public function screen_info_panel( $panels ) {
 		load_plugin_textdomain( $this->plugin_slug, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-		require_once ( 'class-debug-bar-screen-info-panel.php' );
+		require_once 'class-debug-bar-screen-info-panel.php';
 		$panel = new Debug_Bar_Screen_Info_Panel();
 		$panel->set_tab( __( 'Screen Info', $this->plugin_slug ), array( $this, 'screen_info_render' ) );
 		$panels[] = $panel;
@@ -81,6 +96,11 @@ class Debug_Bar_Admin_Screen_Info {
 	}
 
 
+	/**
+	 * Render the screen info.
+	 *
+	 * @return string
+	 */
 	public function screen_info_render() {
 
 		/* Set parentage of current page
@@ -137,6 +157,13 @@ class Debug_Bar_Admin_Screen_Info {
 	}
 
 
+	/**
+	 * Adjust the default output of the pretty printing for the table headers.
+	 *
+	 * @param string $row Current table row.
+	 *
+	 * @return string
+	 */
 	public function filter_pretty_output_table_header_row( $row ) {
 		$replace = '	<th>' . esc_html__( 'Significance', $this->plugin_slug ) . '</th>
 			</tr>';
@@ -145,6 +172,15 @@ class Debug_Bar_Admin_Screen_Info {
 		return $row;
 	}
 
+
+	/**
+	 * Adjust the default output of the pretty printing for the table content.
+	 *
+	 * @param string $row Current table row.
+	 * @param string $key Key for the current table row.
+	 *
+	 * @return string
+	 */
 	public function filter_pretty_output_table_body_row( $row, $key ) {
 		$explain = array(
 			'id'			=> __( 'The unique ID of the screen.', $this->plugin_slug ),
@@ -165,5 +201,4 @@ class Debug_Bar_Admin_Screen_Info {
 
 		return $row;
 	}
-
 }
