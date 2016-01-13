@@ -58,6 +58,9 @@ Have you read what it says in the beautiful red bar at the top of your plugins p
 
 == Changelog ==
 
+= Trunk =
+* Update the pretty print class to v1.5.2.
+
 = 1.1.4 =
 * Updated the pretty print class.
 * Tested & found compatible WP 4.4
