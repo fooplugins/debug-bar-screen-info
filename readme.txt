@@ -2,8 +2,8 @@
 Contributors: bradvin, jrf
 Tags: debug bar, debug, screen id, get_current_screen, WP_Screen, Screen Object
 Requires at least: 3.5.1
-Tested up to: 4.4
-Stable tag: 1.1.4
+Tested up to: 4.5
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,18 +58,21 @@ Have you read what it says in the beautiful red bar at the top of your plugins p
 
 == Changelog ==
 
-= Trunk =
+= 1.1.5 =
+* Hard-code the text-domain for better compatibility with [GlotPress](https://translate.wordpress.org/projects/wp-plugins/debug-bar-screen-info).
 * Update the pretty print class to v1.5.2.
+* Tested & found compatible with WP 4.5
+* Minor tidying up
 
 = 1.1.4 =
 * Updated the pretty print class.
-* Tested & found compatible WP 4.4
+* Tested & found compatible with WP 4.4
 * Minor tidying up
 
 = 1.1.3 =
 * Fix compatibility with the [Plugin Dependencies](http://wordpress.org/plugins/plugin-dependencies/) plugin
 * Updated the pretty print class which now allows for limiting of the recursion depth.
-* Tested & found compatible WP 4.2
+* Tested & found compatible with WP 4.2
 * Minor tidying up
 * Updated language files
 

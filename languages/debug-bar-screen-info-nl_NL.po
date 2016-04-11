@@ -1,67 +1,68 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Debug Bar Screen Info\n"
-"POT-Creation-Date: 2015-04-18 19:17+0100\n"
-"PO-Revision-Date: 2015-04-18 19:20+0100\n"
+"POT-Creation-Date: 2016-04-11 06:14+0200\n"
+"PO-Revision-Date: 2016-04-11 06:14+0200\n"
 "Last-Translator: Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>\n"
 "Language-Team: Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>\n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.5\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-KeywordsList: __;esc_html__;esc_html_e;esc_attr__;esc_attr_e;_e\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: class-debug-bar-screen-info.php:78
+#: class-debug-bar-screen-info.php:103
 msgid "Screen Info"
 msgstr "Scherm info"
 
-#: class-debug-bar-screen-info.php:102
+#: class-debug-bar-screen-info.php:132
 msgid "Screen:"
 msgstr "Scherm:"
 
-#: class-debug-bar-screen-info.php:103
+#: class-debug-bar-screen-info.php:133
 msgid "Properties:"
 msgstr "Eigenschappen:"
 
-#: class-debug-bar-screen-info.php:115 class-debug-bar-screen-info.php:124
+#: class-debug-bar-screen-info.php:145 class-debug-bar-screen-info.php:157
 msgid "Property"
 msgstr "Eigenschap"
 
-#: class-debug-bar-screen-info.php:115 class-debug-bar-screen-info.php:124
+#: class-debug-bar-screen-info.php:145 class-debug-bar-screen-info.php:157
 msgid "Value"
 msgstr "Waarde"
 
-#: class-debug-bar-screen-info.php:131
+#: class-debug-bar-screen-info.php:163
 msgid "No Screen Info Found"
 msgstr "Geen scherm information gevonden."
 
-#: class-debug-bar-screen-info.php:134
+#. TRANSLATORS: %s = the "href" element for the link.
+#: class-debug-bar-screen-info.php:167
 #, php-format
-msgid "For more information, see the %sCodex on WP_Screen"
-msgstr "Voor meer informatie, zie de %sCodex over WP_Screen"
+msgid "For more information, see the <a %s>Codex on WP_Screen</a>"
+msgstr "Voor meer informatie, zie de <a %s>Codex over WP_Screen</a>"
 
-#: class-debug-bar-screen-info.php:134
+#: class-debug-bar-screen-info.php:167
 msgid "View the WordPress codex on WP Screen"
 msgstr "Lees de WordPress codex over WP Screen"
 
-#: class-debug-bar-screen-info.php:141
+#: class-debug-bar-screen-info.php:181
 msgid "Significance"
 msgstr "Significantie"
 
-#: class-debug-bar-screen-info.php:150
+#: class-debug-bar-screen-info.php:199
 msgid "The unique ID of the screen."
 msgstr "Het unieke id van het scherm."
 
-#: class-debug-bar-screen-info.php:151
+#: class-debug-bar-screen-info.php:200
 msgid "Any action associated with the screen."
 msgstr "Acties geassocieerd met het scherm."
 
-#: class-debug-bar-screen-info.php:152
+#: class-debug-bar-screen-info.php:201
 msgid ""
 "The base type of the screen. This is typically the same as id but with any "
 "post types and taxonomies stripped."
@@ -69,27 +70,27 @@ msgstr ""
 "Het basis type van het scherm. Dit is typisch hetzelfde als het id, maar dan "
 "ontdaan van post typen en taxonomiën."
 
-#: class-debug-bar-screen-info.php:153
+#: class-debug-bar-screen-info.php:202
 msgid "Whether this is a multi-site network admin screen."
 msgstr "Of dit een multi-site netwerk admin scherm is."
 
-#: class-debug-bar-screen-info.php:154
+#: class-debug-bar-screen-info.php:203
 msgid "Whether this is a user admin screen."
 msgstr "Of dit een gebruiker admin scherm is."
 
-#: class-debug-bar-screen-info.php:155
+#: class-debug-bar-screen-info.php:204
 msgid "The base menu parent."
 msgstr "De base menu voorouder."
 
-#: class-debug-bar-screen-info.php:156
+#: class-debug-bar-screen-info.php:205
 msgid "The parent_file for the screen per the admin menu system."
 msgstr "Het parent_bestand voor het scherm zoals per het admin menu systeem."
 
-#: class-debug-bar-screen-info.php:157
+#: class-debug-bar-screen-info.php:206
 msgid "The post type associated with the screen, if any."
 msgstr "Het post type dat met het scherm geassocieerd is, als dat er is."
 
-#: class-debug-bar-screen-info.php:158
+#: class-debug-bar-screen-info.php:207
 msgid "The taxonomy associated with the screen, if any."
 msgstr "De taxonomie geassocieerd met het scherm, als dat er is."
 

@@ -2,12 +2,12 @@
 /**
  * Debug Bar Screen Info - Debug Bar Panel
  *
- * @package		WordPress\Plugins\debug-bar-screen-info
- * @author		Brad Vincent <brad@fooplugins.com>
- * @link		https://github.com/fooplugins/debug-bar-screen-info
- * @version		1.1.4
- * @copyright	2013 FooPlugins LLC
- * @license		http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
+ * @package   WordPress\Plugins\debug-bar-screen-info
+ * @author    Brad Vincent <brad@fooplugins.com>
+ * @link      https://github.com/fooplugins/debug-bar-screen-info
+ * @version   1.1.5
+ * @copyright 2013-2016 FooPlugins LLC
+ * @license   http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  */
 
 // If this file is called directly, abort.
