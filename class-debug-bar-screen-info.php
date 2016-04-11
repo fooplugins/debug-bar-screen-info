@@ -87,10 +87,10 @@ class Debug_Bar_Admin_Screen_Info {
 	 * @return array
 	 */
 	public function screen_info_panel( $panels ) {
-		load_plugin_textdomain( $this->plugin_slug, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( 'debug-bar-screen-info', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 		require_once 'class-debug-bar-screen-info-panel.php';
 		$panel = new Debug_Bar_Screen_Info_Panel();
-		$panel->set_tab( __( 'Screen Info', $this->plugin_slug ), array( $this, 'screen_info_render' ) );
+		$panel->set_tab( __( 'Screen Info', 'debug-bar-screen-info' ), array( $this, 'screen_info_render' ) );
 		$panels[] = $panel;
 		return $panels;
 	}
@@ -119,8 +119,8 @@ class Debug_Bar_Admin_Screen_Info {
 			if ( is_array( $properties ) && $properties !== array() ) {
 
 				$output = '
-		<h2><span>' . esc_html__( 'Screen:', $this->plugin_slug ) . '</span>' . esc_html( $screen->id ) . '</h2>
-		<h2><span>' . esc_html__( 'Properties:', $this->plugin_slug ) . '</span>' . count( $properties ) . '</h2>';
+		<h2><span>' . esc_html__( 'Screen:', 'debug-bar-screen-info' ) . '</span>' . esc_html( $screen->id ) . '</h2>
+		<h2><span>' . esc_html__( 'Properties:', 'debug-bar-screen-info' ) . '</span>' . count( $properties ) . '</h2>';
 
 				uksort( $properties, 'strnatcasecmp' );
 
@@ -132,7 +132,7 @@ class Debug_Bar_Admin_Screen_Info {
 					add_filter( 'db_pretty_output_table_header', array( $this, 'filter_pretty_output_table_header_row' ) );
 					add_filter( 'db_pretty_output_table_body_row', array( $this, 'filter_pretty_output_table_body_row' ), 10, 2 );
 
-					$output .= Debug_Bar_Pretty_Output::get_table( $properties, __( 'Property', $this->plugin_slug ), __( 'Value', $this->plugin_slug ), $this->plugin_slug );
+					$output .= Debug_Bar_Pretty_Output::get_table( $properties, __( 'Property', 'debug-bar-screen-info' ), __( 'Value', 'debug-bar-screen-info' ), $this->plugin_slug );
 
 					remove_filter( 'db_pretty_output_table_header', array( $this, 'filter_pretty_output_table_header_row' ) );
 					remove_filter( 'db_pretty_output_table_body_row', array( $this, 'filter_pretty_output_table_body_row' ), 10, 2 );
@@ -141,17 +141,18 @@ class Debug_Bar_Admin_Screen_Info {
 					/* An old version of the pretty output class was loaded,
 					   the explanations will not be added to the table */
 					ob_start();
-					Debug_Bar_Pretty_Output::render_table( $properties, __( 'Property', $this->plugin_slug ), __( 'Value', $this->plugin_slug ), $this->plugin_slug );
+					Debug_Bar_Pretty_Output::render_table( $properties, __( 'Property', 'debug-bar-screen-info' ), __( 'Value', 'debug-bar-screen-info' ), $this->plugin_slug );
 					$output .= ob_get_contents();
 					ob_end_clean();
 				}
 			}
 		}
 		else {
-			$output = '<h2>' . esc_html__( 'No Screen Info Found', $this->plugin_slug ) . '</h2>';
+			$output = '<h2>' . esc_html__( 'No Screen Info Found', 'debug-bar-screen-info' ) . '</h2>';
 		}
 
-		$output .= '<p>' . sprintf( esc_html__( 'For more information, see the %sCodex on WP_Screen', $this->plugin_slug ), '<a href="http://codex.wordpress.org/Class_Reference/WP_Screen" target="_blank" title="' . esc_attr__( 'View the WordPress codex on WP Screen', $this->plugin_slug ) . '">' ) . '</a></p>';
+		/* TRANSLATORS: %s = the "href" element for the link. */
+		$output .= '<p>' . sprintf( wp_kses_post( __( 'For more information, see the <a %s>Codex on WP_Screen</a>', 'debug-bar-screen-info' ) ), 'href="http://codex.wordpress.org/Class_Reference/WP_Screen" target="_blank" title="' . esc_attr__( 'View the WordPress codex on WP Screen', 'debug-bar-screen-info' ) . '">' ) . '</p>';
 
 		return $output;
 	}
@@ -165,7 +166,7 @@ class Debug_Bar_Admin_Screen_Info {
 	 * @return string
 	 */
 	public function filter_pretty_output_table_header_row( $row ) {
-		$replace = '	<th>' . esc_html__( 'Significance', $this->plugin_slug ) . '</th>
+		$replace = '	<th>' . esc_html__( 'Significance', 'debug-bar-screen-info' ) . '</th>
 			</tr>';
 		$row     = str_replace( '</tr>', $replace, $row );
 
@@ -183,15 +184,15 @@ class Debug_Bar_Admin_Screen_Info {
 	 */
 	public function filter_pretty_output_table_body_row( $row, $key ) {
 		$explain = array(
-			'id'			=> __( 'The unique ID of the screen.', $this->plugin_slug ),
-			'action'		=> __( 'Any action associated with the screen.', $this->plugin_slug ),
-			'base'			=> __( 'The base type of the screen. This is typically the same as id but with any post types and taxonomies stripped.', $this->plugin_slug ),
-			'is_network'	=> __( 'Whether this is a multi-site network admin screen.', $this->plugin_slug ),
-			'is_user'		=> __( 'Whether this is a user admin screen.', $this->plugin_slug ),
-			'parent_base'	=> __( 'The base menu parent.', $this->plugin_slug ),
-			'parent_file'	=> __( 'The parent_file for the screen per the admin menu system.', $this->plugin_slug ),
-			'post_type'		=> __( 'The post type associated with the screen, if any.', $this->plugin_slug ),
-			'taxonomy'		=> __( 'The taxonomy associated with the screen, if any.', $this->plugin_slug ),
+			'id'			=> __( 'The unique ID of the screen.', 'debug-bar-screen-info' ),
+			'action'		=> __( 'Any action associated with the screen.', 'debug-bar-screen-info' ),
+			'base'			=> __( 'The base type of the screen. This is typically the same as id but with any post types and taxonomies stripped.', 'debug-bar-screen-info' ),
+			'is_network'	=> __( 'Whether this is a multi-site network admin screen.', 'debug-bar-screen-info' ),
+			'is_user'		=> __( 'Whether this is a user admin screen.', 'debug-bar-screen-info' ),
+			'parent_base'	=> __( 'The base menu parent.', 'debug-bar-screen-info' ),
+			'parent_file'	=> __( 'The parent_file for the screen per the admin menu system.', 'debug-bar-screen-info' ),
+			'post_type'		=> __( 'The post type associated with the screen, if any.', 'debug-bar-screen-info' ),
+			'taxonomy'		=> __( 'The taxonomy associated with the screen, if any.', 'debug-bar-screen-info' ),
 		);
 
 		$replace = '	<td class="' . esc_attr( $this->plugin_slug ) . '-explain">' . ( isset( $explain[ $key ] ) ? esc_html( $explain[ $key ] ) : '&nbsp;' ) . '
