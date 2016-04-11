@@ -10,6 +10,10 @@
  * @license		http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  */
 
+
+/**
+ * Debug Bar Admin Screen Info class.
+ */
 class Debug_Bar_Admin_Screen_Info {
 
 	/**
@@ -82,7 +86,7 @@ class Debug_Bar_Admin_Screen_Info {
 	/**
 	 * Create the screen info debug bar tab.
 	 *
-	 * @param array $panels
+	 * @param array $panels Existing debug bar panels.
 	 *
 	 * @return array
 	 */
@@ -101,10 +105,11 @@ class Debug_Bar_Admin_Screen_Info {
 	 * @return string
 	 */
 	public function screen_info_render() {
-
-		/* Set parentage of current page
-		   Isn't set yet as it is set from admin_header.php which is run after the admin bar has loaded
-		   on the admin side */
+		/*
+		 * Set parentage of current page.
+		 * Isn't set yet as it is set from admin_header.php which is run after the admin bar has loaded
+		 * on the admin side.
+		 */
 		if ( ( isset( $GLOBALS['current_screen'] ) && is_object( $GLOBALS['current_screen'] ) ) && ( isset( $GLOBALS['parent_file'] ) && is_string( $GLOBALS['parent_file'] ) && $GLOBALS['parent_file'] !== '' ) ) {
 			$GLOBALS['current_screen']->set_parentage( $GLOBALS['parent_file'] );
 		}
@@ -137,8 +142,10 @@ class Debug_Bar_Admin_Screen_Info {
 					remove_filter( 'db_pretty_output_table_body_row', array( $this, 'filter_pretty_output_table_body_row' ), 10, 2 );
 				}
 				else {
-					/* An old version of the pretty output class was loaded,
-					   the explanations will not be added to the table */
+					/*
+					 * An old version of the pretty output class was loaded,
+					 * the explanations will not be added to the table.
+					 */
 					ob_start();
 					Debug_Bar_Pretty_Output::render_table( $properties, __( 'Property', 'debug-bar-screen-info' ), __( 'Value', 'debug-bar-screen-info' ), $this->plugin_slug );
 					$output .= ob_get_contents();

@@ -10,25 +10,56 @@
  * @license		http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  */
 
+
+/**
+ * Debug Bar Screen Info Panel class.
+ */
 class Debug_Bar_Screen_Info_Panel extends Debug_Bar_Panel {
 
+	/**
+	 * Tab title.
+	 *
+	 * @var string
+	 */
 	private $tab;
+
+	/**
+	 * Panel rendering callback.
+	 *
+	 * @var mixed Callable PHP function/method.
+	 */
 	private $callback;
 
+	/**
+	 * Constructor.
+	 *
+	 * @param string $title    The title of the panel.
+	 * @param mixed  $callback The callback to use to render the panel output.
+	 */
 	public function __construct( $title = '', $callback = '' ) {
 		$this->tab      = $title;
 		$this->callback = $callback;
 		parent::__construct();
 	}
 
+	/**
+	 * Initialize the panel.
+	 */
 	public function init() {
 		$this->title( $this->tab );
 	}
 
+	/**
+	 * Limit visibility of the output to super admins on multi-site and
+	 * admins on non multi-site installations.
+	 */
 	public function prerender() {
 		$this->set_visible( is_admin() );
 	}
 
+	/**
+	 * Render the output.
+	 */
 	public function render() {
 		echo call_user_func( $this->callback );
 	}
