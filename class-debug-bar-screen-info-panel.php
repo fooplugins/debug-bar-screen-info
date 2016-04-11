@@ -12,18 +12,16 @@
 
 class Debug_Bar_Screen_Info_Panel extends Debug_Bar_Panel {
 
-	private $tab_name;
 	private $tab;
 	private $callback;
 
-	public function init() {
-		$this->title( $this->tab );
+	public function __construct( $title = '', $callback = '' ) {
+		$this->tab      = $title;
+		$this->callback = $callback;
+		parent::__construct();
 	}
 
-	public function set_tab( $name, $callback ) {
-		$this->tab_name = strtolower( preg_replace( '#[^a-z0-9]#msiU', '', $name ) );
-		$this->tab      = $name;
-		$this->callback = $callback;
+	public function init() {
 		$this->title( $this->tab );
 	}
 

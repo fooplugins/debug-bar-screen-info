@@ -88,10 +88,9 @@ class Debug_Bar_Admin_Screen_Info {
 	 */
 	public function screen_info_panel( $panels ) {
 		load_plugin_textdomain( 'debug-bar-screen-info', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+
 		require_once 'class-debug-bar-screen-info-panel.php';
-		$panel = new Debug_Bar_Screen_Info_Panel();
-		$panel->set_tab( __( 'Screen Info', 'debug-bar-screen-info' ), array( $this, 'screen_info_render' ) );
-		$panels[] = $panel;
+		$panels[] = new Debug_Bar_Screen_Info_Panel( __( 'Screen Info', 'debug-bar-screen-info' ), array( $this, 'screen_info_render' ) );
 		return $panels;
 	}
 
