@@ -10,6 +10,12 @@
  * @license		http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  */
 
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	header( 'Status: 403 Forbidden' );
+	header( 'HTTP/1.1 403 Forbidden' );
+	exit();
+}
 
 /**
  * Debug Bar Admin Screen Info class.
