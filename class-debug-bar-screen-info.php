@@ -110,7 +110,7 @@ class Debug_Bar_Admin_Screen_Info {
 		 * Isn't set yet as it is set from admin_header.php which is run after the admin bar has loaded
 		 * on the admin side.
 		 */
-		if ( ( isset( $GLOBALS['current_screen'] ) && is_object( $GLOBALS['current_screen'] ) ) && ( isset( $GLOBALS['parent_file'] ) && is_string( $GLOBALS['parent_file'] ) && $GLOBALS['parent_file'] !== '' ) ) {
+		if ( ( isset( $GLOBALS['current_screen'] ) && is_object( $GLOBALS['current_screen'] ) ) && ( isset( $GLOBALS['parent_file'] ) && is_string( $GLOBALS['parent_file'] ) && '' !== $GLOBALS['parent_file'] ) ) {
 			$GLOBALS['current_screen']->set_parentage( $GLOBALS['parent_file'] );
 		}
 
@@ -120,7 +120,7 @@ class Debug_Bar_Admin_Screen_Info {
 
 			$properties = get_object_vars( $screen );
 
-			if ( is_array( $properties ) && $properties !== array() ) {
+			if ( ! empty( $properties ) && is_array( $properties ) ) {
 
 				$output = '
 		<h2><span>' . esc_html__( 'Screen:', 'debug-bar-screen-info' ) . '</span>' . esc_html( $screen->id ) . '</h2>
@@ -140,6 +140,7 @@ class Debug_Bar_Admin_Screen_Info {
 
 					remove_filter( 'db_pretty_output_table_header', array( $this, 'filter_pretty_output_table_header_row' ) );
 					remove_filter( 'db_pretty_output_table_body_row', array( $this, 'filter_pretty_output_table_body_row' ), 10, 2 );
+
 				}
 				else {
 					/*
@@ -152,8 +153,7 @@ class Debug_Bar_Admin_Screen_Info {
 					ob_end_clean();
 				}
 			}
-		}
-		else {
+		} else {
 			$output = '<h2>' . esc_html__( 'No Screen Info Found', 'debug-bar-screen-info' ) . '</h2>';
 		}
 

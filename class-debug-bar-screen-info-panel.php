@@ -61,6 +61,6 @@ class Debug_Bar_Screen_Info_Panel extends Debug_Bar_Panel {
 	 * Render the output.
 	 */
 	public function render() {
-		echo call_user_func( $this->callback );
+		echo call_user_func( $this->callback ); // WPCS: XSS ok.
 	}
 }
