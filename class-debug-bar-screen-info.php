@@ -97,11 +97,32 @@ class Debug_Bar_Admin_Screen_Info {
 	 * @return array
 	 */
 	public function screen_info_panel( $panels ) {
-		load_plugin_textdomain( 'debug-bar-screen-info', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+		$this->load_textdomain( $this->plugin_slug );
 
 		require_once 'class-debug-bar-screen-info-panel.php';
 		$panels[] = new Debug_Bar_Screen_Info_Panel( __( 'Screen Info', 'debug-bar-screen-info' ), array( $this, 'screen_info_render' ) );
 		return $panels;
+	}
+
+
+	/**
+	 * Load the plugin text strings.
+	 *
+	 * Compatible with use of the plugin in the must-use plugins directory.
+	 *
+	 * @param string $domain Text domain to load.
+	 */
+	protected function load_textdomain( $domain ) {
+		if ( is_textdomain_loaded( $domain ) ) {
+			return;
+		}
+
+		$lang_path = dirname( plugin_basename( __FILE__ ) ) . '/languages';
+		if ( false === strpos( __FILE__, basename( WPMU_PLUGIN_DIR ) ) ) {
+			load_plugin_textdomain( $domain, false, $lang_path );
+		} else {
+			load_muplugin_textdomain( $domain, $lang_path );
+		}
 	}
 
 

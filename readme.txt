@@ -60,6 +60,7 @@ Have you read what it says in the beautiful red bar at the top of your plugins p
 
 = 1.1.5 =
 * Hard-code the text-domain for better compatibility with [GlotPress](https://translate.wordpress.org/projects/wp-plugins/debug-bar-screen-info).
+* Make loading of text-domain compatible with use of the plugin in the `must-use` plugins directory.
 * Updated the pretty print class to v1.6.0.
 * Tested & found compatible with WP 4.5
 * Minor tidying up
