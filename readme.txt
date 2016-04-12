@@ -12,7 +12,7 @@ Show screen info of the current admin page in a new tab within the debug bar
 == Description ==
 
 > This plugin is an add-on for *Debug Bar*.
-> You must install and activate [Debug Bar](http://wordpress.org/extend/plugins/debug-bar/) first, for this plugin to work.
+> You must install and activate [Debug Bar](https://wordpress.org/plugins/debug-bar/) first, for this plugin to work.
 
 Adds a new tab to the debug bar which shows all the screen info for the current page in the admin backend.
 
@@ -21,7 +21,7 @@ Please note that this plugin should be used solely for debugging and/or on a dev
 
 ***********************************
 
-If you like this plugin, please [rate and/or review](http://wordpress.org/support/view/plugin-reviews/debug-bar-screen-info) it. If you have ideas on how to make the plugin even better or if you have found any bugs, please report these in the [Support Forum](http://wordpress.org/support/plugin/debug-bar-screen-info) or in the [GitHub repository](https://github.com/fooplugins/debug-bar-screen-info/issues).
+If you like this plugin, please [rate and/or review](https://wordpress.org/support/view/plugin-reviews/debug-bar-screen-info) it. If you have ideas on how to make the plugin even better or if you have found any bugs, please report these in the [Support Forum](https://wordpress.org/support/plugin/debug-bar-screen-info) or in the [GitHub repository](https://github.com/fooplugins/debug-bar-screen-info/issues).
 
 
 == Frequently Asked Questions ==
@@ -46,7 +46,7 @@ Have you read what it says in the beautiful red bar at the top of your plugins p
 
 == Installation ==
 
-1. Install Debug Bar if not already installed (http://wordpress.org/extend/plugins/debug-bar/)
+1. Install Debug Bar if not already installed (https://wordpress.org/plugins/debug-bar/)
 1. Extract the .zip file for this plugin and upload its contents to the `/wp-content/plugins/` directory. Alternatively, you can install directly from the Plugin directory within your WordPress Install.
 1. Activate the plugin through the 'Plugins' menu in WordPress.
 
@@ -71,7 +71,7 @@ Have you read what it says in the beautiful red bar at the top of your plugins p
 * Minor tidying up
 
 = 1.1.3 =
-* Fix compatibility with the [Plugin Dependencies](http://wordpress.org/plugins/plugin-dependencies/) plugin
+* Fix compatibility with the [Plugin Dependencies](https://wordpress.org/plugins/plugin-dependencies/) plugin
 * Updated the pretty print class which now allows for limiting of the recursion depth.
 * Tested & found compatible with WP 4.2
 * Minor tidying up
