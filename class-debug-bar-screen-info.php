@@ -2,14 +2,24 @@
 /**
  * Debug Bar Screen Info
  *
- * @package		WordPress\Plugins\debug-bar-screen-info
- * @author		Brad Vincent <brad@fooplugins.com>
- * @link		https://github.com/fooplugins/debug-bar-screen-info
- * @version		1.1.4
- * @copyright	2013 FooPlugins LLC
- * @license		http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
+ * @package   WordPress\Plugins\debug-bar-screen-info
+ * @author    Brad Vincent <brad@fooplugins.com>
+ * @link      https://github.com/fooplugins/debug-bar-screen-info
+ * @version   1.1.5
+ * @copyright 2013-2016 FooPlugins LLC
+ * @license   http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  */
 
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	header( 'Status: 403 Forbidden' );
+	header( 'HTTP/1.1 403 Forbidden' );
+	exit();
+}
+
+/**
+ * Debug Bar Admin Screen Info class.
+ */
 class Debug_Bar_Admin_Screen_Info {
 
 	/**
@@ -82,17 +92,37 @@ class Debug_Bar_Admin_Screen_Info {
 	/**
 	 * Create the screen info debug bar tab.
 	 *
-	 * @param array $panels
+	 * @param array $panels Existing debug bar panels.
 	 *
 	 * @return array
 	 */
 	public function screen_info_panel( $panels ) {
-		load_plugin_textdomain( $this->plugin_slug, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		$this->load_textdomain( $this->plugin_slug );
+
 		require_once 'class-debug-bar-screen-info-panel.php';
-		$panel = new Debug_Bar_Screen_Info_Panel();
-		$panel->set_tab( __( 'Screen Info', $this->plugin_slug ), array( $this, 'screen_info_render' ) );
-		$panels[] = $panel;
+		$panels[] = new Debug_Bar_Screen_Info_Panel( __( 'Screen Info', 'debug-bar-screen-info' ), array( $this, 'screen_info_render' ) );
 		return $panels;
+	}
+
+
+	/**
+	 * Load the plugin text strings.
+	 *
+	 * Compatible with use of the plugin in the must-use plugins directory.
+	 *
+	 * @param string $domain Text domain to load.
+	 */
+	protected function load_textdomain( $domain ) {
+		if ( is_textdomain_loaded( $domain ) ) {
+			return;
+		}
+
+		$lang_path = dirname( plugin_basename( __FILE__ ) ) . '/languages';
+		if ( false === strpos( __FILE__, basename( WPMU_PLUGIN_DIR ) ) ) {
+			load_plugin_textdomain( $domain, false, $lang_path );
+		} else {
+			load_muplugin_textdomain( $domain, $lang_path );
+		}
 	}
 
 
@@ -102,11 +132,12 @@ class Debug_Bar_Admin_Screen_Info {
 	 * @return string
 	 */
 	public function screen_info_render() {
-
-		/* Set parentage of current page
-		   Isn't set yet as it is set from admin_header.php which is run after the admin bar has loaded
-		   on the admin side */
-		if ( ( isset( $GLOBALS['current_screen'] ) && is_object( $GLOBALS['current_screen'] ) ) && ( isset( $GLOBALS['parent_file'] ) && is_string( $GLOBALS['parent_file'] ) && $GLOBALS['parent_file'] !== '' ) ) {
+		/*
+		 * Set parentage of current page.
+		 * Isn't set yet as it is set from admin_header.php which is run after the admin bar has loaded
+		 * on the admin side.
+		 */
+		if ( ( isset( $GLOBALS['current_screen'] ) && is_object( $GLOBALS['current_screen'] ) ) && ( isset( $GLOBALS['parent_file'] ) && is_string( $GLOBALS['parent_file'] ) && '' !== $GLOBALS['parent_file'] ) ) {
 			$GLOBALS['current_screen']->set_parentage( $GLOBALS['parent_file'] );
 		}
 
@@ -116,11 +147,11 @@ class Debug_Bar_Admin_Screen_Info {
 
 			$properties = get_object_vars( $screen );
 
-			if ( is_array( $properties ) && $properties !== array() ) {
+			if ( ! empty( $properties ) && is_array( $properties ) ) {
 
 				$output = '
-		<h2><span>' . esc_html__( 'Screen:', $this->plugin_slug ) . '</span>' . esc_html( $screen->id ) . '</h2>
-		<h2><span>' . esc_html__( 'Properties:', $this->plugin_slug ) . '</span>' . count( $properties ) . '</h2>';
+		<h2><span>' . esc_html__( 'Screen:', 'debug-bar-screen-info' ) . '</span>' . esc_html( $screen->id ) . '</h2>
+		<h2><span>' . esc_html__( 'Properties:', 'debug-bar-screen-info' ) . '</span>' . count( $properties ) . '</h2>';
 
 				uksort( $properties, 'strnatcasecmp' );
 
@@ -132,26 +163,29 @@ class Debug_Bar_Admin_Screen_Info {
 					add_filter( 'db_pretty_output_table_header', array( $this, 'filter_pretty_output_table_header_row' ) );
 					add_filter( 'db_pretty_output_table_body_row', array( $this, 'filter_pretty_output_table_body_row' ), 10, 2 );
 
-					$output .= Debug_Bar_Pretty_Output::get_table( $properties, __( 'Property', $this->plugin_slug ), __( 'Value', $this->plugin_slug ), $this->plugin_slug );
+					$output .= Debug_Bar_Pretty_Output::get_table( $properties, __( 'Property', 'debug-bar-screen-info' ), __( 'Value', 'debug-bar-screen-info' ), $this->plugin_slug );
 
 					remove_filter( 'db_pretty_output_table_header', array( $this, 'filter_pretty_output_table_header_row' ) );
 					remove_filter( 'db_pretty_output_table_body_row', array( $this, 'filter_pretty_output_table_body_row' ), 10, 2 );
+
 				}
 				else {
-					/* An old version of the pretty output class was loaded,
-					   the explanations will not be added to the table */
+					/*
+					 * An old version of the pretty output class was loaded,
+					 * the explanations will not be added to the table.
+					 */
 					ob_start();
-					Debug_Bar_Pretty_Output::render_table( $properties, __( 'Property', $this->plugin_slug ), __( 'Value', $this->plugin_slug ), $this->plugin_slug );
+					Debug_Bar_Pretty_Output::render_table( $properties, __( 'Property', 'debug-bar-screen-info' ), __( 'Value', 'debug-bar-screen-info' ), $this->plugin_slug );
 					$output .= ob_get_contents();
 					ob_end_clean();
 				}
 			}
-		}
-		else {
-			$output = '<h2>' . esc_html__( 'No Screen Info Found', $this->plugin_slug ) . '</h2>';
+		} else {
+			$output = '<h2>' . esc_html__( 'No Screen Info Found', 'debug-bar-screen-info' ) . '</h2>';
 		}
 
-		$output .= '<p>' . sprintf( esc_html__( 'For more information, see the %sCodex on WP_Screen', $this->plugin_slug ), '<a href="http://codex.wordpress.org/Class_Reference/WP_Screen" target="_blank" title="' . esc_attr__( 'View the WordPress codex on WP Screen', $this->plugin_slug ) . '">' ) . '</a></p>';
+		/* TRANSLATORS: %s = the "href" element for the link. */
+		$output .= '<p>' . sprintf( wp_kses_post( __( 'For more information, see the <a %s>Codex on WP_Screen</a>', 'debug-bar-screen-info' ) ), 'href="http://codex.wordpress.org/Class_Reference/WP_Screen" target="_blank" title="' . esc_attr__( 'View the WordPress codex on WP Screen', 'debug-bar-screen-info' ) . '">' ) . '</p>';
 
 		return $output;
 	}
@@ -165,7 +199,7 @@ class Debug_Bar_Admin_Screen_Info {
 	 * @return string
 	 */
 	public function filter_pretty_output_table_header_row( $row ) {
-		$replace = '	<th>' . esc_html__( 'Significance', $this->plugin_slug ) . '</th>
+		$replace = '	<th>' . esc_html__( 'Significance', 'debug-bar-screen-info' ) . '</th>
 			</tr>';
 		$row     = str_replace( '</tr>', $replace, $row );
 
@@ -183,15 +217,15 @@ class Debug_Bar_Admin_Screen_Info {
 	 */
 	public function filter_pretty_output_table_body_row( $row, $key ) {
 		$explain = array(
-			'id'			=> __( 'The unique ID of the screen.', $this->plugin_slug ),
-			'action'		=> __( 'Any action associated with the screen.', $this->plugin_slug ),
-			'base'			=> __( 'The base type of the screen. This is typically the same as id but with any post types and taxonomies stripped.', $this->plugin_slug ),
-			'is_network'	=> __( 'Whether this is a multi-site network admin screen.', $this->plugin_slug ),
-			'is_user'		=> __( 'Whether this is a user admin screen.', $this->plugin_slug ),
-			'parent_base'	=> __( 'The base menu parent.', $this->plugin_slug ),
-			'parent_file'	=> __( 'The parent_file for the screen per the admin menu system.', $this->plugin_slug ),
-			'post_type'		=> __( 'The post type associated with the screen, if any.', $this->plugin_slug ),
-			'taxonomy'		=> __( 'The taxonomy associated with the screen, if any.', $this->plugin_slug ),
+			'id'			=> __( 'The unique ID of the screen.', 'debug-bar-screen-info' ),
+			'action'		=> __( 'Any action associated with the screen.', 'debug-bar-screen-info' ),
+			'base'			=> __( 'The base type of the screen. This is typically the same as id but with any post types and taxonomies stripped.', 'debug-bar-screen-info' ),
+			'is_network'	=> __( 'Whether this is a multi-site network admin screen.', 'debug-bar-screen-info' ),
+			'is_user'		=> __( 'Whether this is a user admin screen.', 'debug-bar-screen-info' ),
+			'parent_base'	=> __( 'The base menu parent.', 'debug-bar-screen-info' ),
+			'parent_file'	=> __( 'The parent_file for the screen per the admin menu system.', 'debug-bar-screen-info' ),
+			'post_type'		=> __( 'The post type associated with the screen, if any.', 'debug-bar-screen-info' ),
+			'taxonomy'		=> __( 'The taxonomy associated with the screen, if any.', 'debug-bar-screen-info' ),
 		);
 
 		$replace = '	<td class="' . esc_attr( $this->plugin_slug ) . '-explain">' . ( isset( $explain[ $key ] ) ? esc_html( $explain[ $key ] ) : '&nbsp;' ) . '

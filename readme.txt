@@ -2,8 +2,8 @@
 Contributors: bradvin, jrf
 Tags: debug bar, debug, screen id, get_current_screen, WP_Screen, Screen Object
 Requires at least: 3.5.1
-Tested up to: 4.4
-Stable tag: 1.1.4
+Tested up to: 4.5
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Show screen info of the current admin page in a new tab within the debug bar
 == Description ==
 
 > This plugin is an add-on for *Debug Bar*.
-> You must install and activate [Debug Bar](http://wordpress.org/extend/plugins/debug-bar/) first, for this plugin to work.
+> You must install and activate [Debug Bar](https://wordpress.org/plugins/debug-bar/) first, for this plugin to work.
 
 Adds a new tab to the debug bar which shows all the screen info for the current page in the admin backend.
 
@@ -21,7 +21,7 @@ Please note that this plugin should be used solely for debugging and/or on a dev
 
 ***********************************
 
-If you like this plugin, please [rate and/or review](http://wordpress.org/support/view/plugin-reviews/debug-bar-screen-info) it. If you have ideas on how to make the plugin even better or if you have found any bugs, please report these in the [Support Forum](http://wordpress.org/support/plugin/debug-bar-screen-info) or in the [GitHub repository](https://github.com/fooplugins/debug-bar-screen-info/issues).
+If you like this plugin, please [rate and/or review](https://wordpress.org/support/view/plugin-reviews/debug-bar-screen-info) it. If you have ideas on how to make the plugin even better or if you have found any bugs, please report these in the [Support Forum](https://wordpress.org/support/plugin/debug-bar-screen-info) or in the [GitHub repository](https://github.com/fooplugins/debug-bar-screen-info/issues).
 
 
 == Frequently Asked Questions ==
@@ -46,7 +46,7 @@ Have you read what it says in the beautiful red bar at the top of your plugins p
 
 == Installation ==
 
-1. Install Debug Bar if not already installed (http://wordpress.org/extend/plugins/debug-bar/)
+1. Install Debug Bar if not already installed (https://wordpress.org/plugins/debug-bar/)
 1. Extract the .zip file for this plugin and upload its contents to the `/wp-content/plugins/` directory. Alternatively, you can install directly from the Plugin directory within your WordPress Install.
 1. Activate the plugin through the 'Plugins' menu in WordPress.
 
@@ -58,15 +58,22 @@ Have you read what it says in the beautiful red bar at the top of your plugins p
 
 == Changelog ==
 
+= 1.1.5 =
+* Hard-code the text-domain for better compatibility with [GlotPress](https://translate.wordpress.org/projects/wp-plugins/debug-bar-screen-info).
+* Make loading of text-domain compatible with use of the plugin in the `must-use` plugins directory.
+* Updated the pretty print class to v1.6.0.
+* Tested & found compatible with WP 4.5
+* Minor tidying up
+
 = 1.1.4 =
 * Updated the pretty print class.
-* Tested & found compatible WP 4.4
+* Tested & found compatible with WP 4.4
 * Minor tidying up
 
 = 1.1.3 =
-* Fix compatibility with the [Plugin Dependencies](http://wordpress.org/plugins/plugin-dependencies/) plugin
+* Fix compatibility with the [Plugin Dependencies](https://wordpress.org/plugins/plugin-dependencies/) plugin
 * Updated the pretty print class which now allows for limiting of the recursion depth.
-* Tested & found compatible WP 4.2
+* Tested & found compatible with WP 4.2
 * Minor tidying up
 * Updated language files
 

@@ -4,23 +4,23 @@
  *
  * Show screen info of the current admin page in a new tab within the debug bar
  *
- * @package		WordPress\Plugins\debug-bar-screen-info
- * @author		Brad Vincent <brad@fooplugins.com>
- * @link		https://github.com/fooplugins/debug-bar-screen-info
- * @version		1.1.4
- * @copyright	2013 FooPlugins LLC
- * @license		http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
+ * @package   WordPress\Plugins\debug-bar-screen-info
+ * @author    Brad Vincent <brad@fooplugins.com>
+ * @link      https://github.com/fooplugins/debug-bar-screen-info
+ * @version   1.1.5
+ * @copyright 2013-2016 FooPlugins LLC
+ * @license   http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  *
  * @wordpress-plugin
  * Plugin Name: Debug Bar Screen Info
  * Plugin URI:  https://github.com/fooplugins/debug-bar-screen-info
  * Description: Show screen info of the current admin page in a new tab within the debug bar
- * Version:     1.1.4
+ * Version:     1.1.5
  * Author:      bradvin, jrf
  * Author URI:  http://fooplugins.com
  * Depends:     Debug Bar
  * Text Domain: debug-bar-screen-info
- * Domain Path: /languages/
+ * Domain Path: /languages
  * License:     GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
