@@ -60,7 +60,7 @@ class Debug_Bar_Admin_Screen_Info {
 	public static function get_instance() {
 
 		// If the single instance hasn't been set, set it now.
-		if ( null == self::$instance ) {
+		if ( null === self::$instance ) {
 			self::$instance = new self;
 		}
 
@@ -168,8 +168,7 @@ class Debug_Bar_Admin_Screen_Info {
 					remove_filter( 'db_pretty_output_table_header', array( $this, 'filter_pretty_output_table_header_row' ) );
 					remove_filter( 'db_pretty_output_table_body_row', array( $this, 'filter_pretty_output_table_body_row' ), 10, 2 );
 
-				}
-				else {
+				} else {
 					/*
 					 * An old version of the pretty output class was loaded,
 					 * the explanations will not be added to the table.
