@@ -42,7 +42,7 @@ if ( ! function_exists( 'dbsi_has_parent_plugin' ) ) {
 		$file = plugin_basename( __FILE__ );
 
 		if ( is_admin() && ( ! class_exists( 'Debug_Bar' ) && current_user_can( 'activate_plugins' ) ) && is_plugin_active( $file ) ) {
-			add_action( 'admin_notices', create_function( null, 'echo \'<div class="error"><p>\', sprintf( __( \'Activation failed: Debug Bar must be activated to use the <strong>Debug Bar Screen Info</strong> Plugin. <a href="%s">Visit your plugins page to activate</a>.\', \'debug-bar-screen-info\' ), admin_url( \'plugins.php#debug-bar\' ) ), \'</p></div>\';' ) );
+			add_action( 'admin_notices', create_function( null, 'echo \'<div class="error"><p>\', sprintf( __( \'Activation failed: Debug Bar must be activated to use the <strong>Debug Bar Screen Info</strong> Plugin. <a href="%s">Visit your plugins page to install & activate</a>.\', \'debug-bar-screen-info\' ), admin_url( \'plugin-install.php?tab=search&s=debug+bar\' ) ), \'</p></div>\';' ) );
 
 			deactivate_plugins( $file, false, is_network_admin() );
 
