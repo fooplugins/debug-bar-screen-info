@@ -58,6 +58,9 @@ Have you read what it says in the beautiful red bar at the top of your plugins p
 
 == Changelog ==
 
+= Trunk =
+* Defer to just in time loading of translations for WP > 4.5.
+
 = 1.1.5 =
 * Hard-code the text-domain for better compatibility with [GlotPress](https://translate.wordpress.org/projects/wp-plugins/debug-bar-screen-info).
 * Make loading of text-domain compatible with use of the plugin in the `must-use` plugins directory.
