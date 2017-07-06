@@ -216,15 +216,15 @@ class Debug_Bar_Admin_Screen_Info {
 	 */
 	public function filter_pretty_output_table_body_row( $row, $key ) {
 		$explain = array(
-			'id'			=> __( 'The unique ID of the screen.', 'debug-bar-screen-info' ),
-			'action'		=> __( 'Any action associated with the screen.', 'debug-bar-screen-info' ),
-			'base'			=> __( 'The base type of the screen. This is typically the same as id but with any post types and taxonomies stripped.', 'debug-bar-screen-info' ),
-			'is_network'	=> __( 'Whether this is a multi-site network admin screen.', 'debug-bar-screen-info' ),
-			'is_user'		=> __( 'Whether this is a user admin screen.', 'debug-bar-screen-info' ),
-			'parent_base'	=> __( 'The base menu parent.', 'debug-bar-screen-info' ),
-			'parent_file'	=> __( 'The parent_file for the screen per the admin menu system.', 'debug-bar-screen-info' ),
-			'post_type'		=> __( 'The post type associated with the screen, if any.', 'debug-bar-screen-info' ),
-			'taxonomy'		=> __( 'The taxonomy associated with the screen, if any.', 'debug-bar-screen-info' ),
+			'id'          => __( 'The unique ID of the screen.', 'debug-bar-screen-info' ),
+			'action'      => __( 'Any action associated with the screen.', 'debug-bar-screen-info' ),
+			'base'        => __( 'The base type of the screen. This is typically the same as id but with any post types and taxonomies stripped.', 'debug-bar-screen-info' ),
+			'is_network'  => __( 'Whether this is a multi-site network admin screen.', 'debug-bar-screen-info' ),
+			'is_user'     => __( 'Whether this is a user admin screen.', 'debug-bar-screen-info' ),
+			'parent_base' => __( 'The base menu parent.', 'debug-bar-screen-info' ),
+			'parent_file' => __( 'The parent_file for the screen per the admin menu system.', 'debug-bar-screen-info' ),
+			'post_type'   => __( 'The post type associated with the screen, if any.', 'debug-bar-screen-info' ),
+			'taxonomy'    => __( 'The taxonomy associated with the screen, if any.', 'debug-bar-screen-info' ),
 		);
 
 		$replace = '	<td class="' . esc_attr( $this->plugin_slug ) . '-explain">' . ( isset( $explain[ $key ] ) ? esc_html( $explain[ $key ] ) : '&nbsp;' ) . '
