@@ -199,7 +199,7 @@ class Debug_Bar_Admin_Screen_Info {
 		}
 
 		/* TRANSLATORS: %s = the "href" element for the link. */
-		$output .= '<p>' . sprintf( wp_kses_post( __( 'For more information, see the <a %s>Codex on WP_Screen</a>', 'debug-bar-screen-info' ) ), 'href="http://codex.wordpress.org/Class_Reference/WP_Screen" target="_blank" title="' . esc_attr__( 'View the WordPress codex on WP Screen', 'debug-bar-screen-info' ) . '">' ) . '</p>';
+		$output .= '<p>' . wp_kses_post( sprintf( __( 'For more information, see the <a %s>Codex on WP_Screen</a> or the <a %s>Developers Reference</a>.', 'debug-bar-screen-info' ), 'href="http://codex.wordpress.org/Class_Reference/WP_Screen" target="_blank"', 'href="https://developer.wordpress.org/reference/classes/wp_screen/" target="_blank"' ) ) . '</p>';
 
 		return $output;
 	}
