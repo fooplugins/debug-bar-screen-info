@@ -2,8 +2,8 @@
 Contributors: bradvin, jrf
 Tags: debug bar, debug, screen id, get_current_screen, WP_Screen, Screen Object
 Requires at least: 3.5.1
-Tested up to: 4.5
-Stable tag: 1.1.5
+Tested up to: 4.8
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,8 +58,14 @@ Have you read what it says in the beautiful red bar at the top of your plugins p
 
 == Changelog ==
 
-= Trunk =
+= 1.2 =
+* Improved usability of the admin notice in case the Debug Bar plugin is not active.
+* The plugin will now add itself to the list of "recently active" plugins if it self-deactivates bcause the Debug Bar plugin is not active.
+* Fixed broken link to more information about the WP_Screen object.
 * Defer to just in time loading of translations for WP > 4.5.
+* Updated the pretty print dependency to v1.7.0.
+* Minor housekeeping.
+* Tested & found compatible WP 4.8.
 
 = 1.1.5 =
 * Hard-code the text-domain for better compatibility with [GlotPress](https://translate.wordpress.org/projects/wp-plugins/debug-bar-screen-info).
