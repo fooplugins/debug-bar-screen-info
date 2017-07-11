@@ -5,8 +5,8 @@
  * @package   WordPress\Plugins\debug-bar-screen-info
  * @author    Brad Vincent <brad@fooplugins.com>
  * @link      https://github.com/fooplugins/debug-bar-screen-info
- * @version   1.1.5
- * @copyright 2013-2016 FooPlugins LLC
+ * @version   1.2.0
+ * @copyright 2013-2017 FooPlugins LLC
  * @license   http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  */
 
@@ -29,7 +29,7 @@ class Debug_Bar_Admin_Screen_Info {
 	 *
 	 * @since   1.0.0
 	 */
-	protected $version = '1.1.1';
+	protected $version = '1.2.0';
 
 	/**
 	 * Unique identifier for your plugin.
@@ -198,7 +198,7 @@ class Debug_Bar_Admin_Screen_Info {
 			$output = '<h2>' . esc_html__( 'No Screen Info Found', 'debug-bar-screen-info' ) . '</h2>';
 		}
 
-		/* TRANSLATORS: %s = the "href" element for the link. */
+		/* translators: %s = the "href" element for the link. */
 		$output .= '<p>' . wp_kses_post( sprintf( __( 'For more information, see the <a %s>Codex on WP_Screen</a> or the <a %s>Developers Reference</a>.', 'debug-bar-screen-info' ), 'href="http://codex.wordpress.org/Class_Reference/WP_Screen" target="_blank"', 'href="https://developer.wordpress.org/reference/classes/wp_screen/" target="_blank"' ) ) . '</p>';
 
 		return $output;

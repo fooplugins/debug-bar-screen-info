@@ -5,8 +5,8 @@
  * @package   WordPress\Plugins\debug-bar-screen-info
  * @author    Brad Vincent <brad@fooplugins.com>
  * @link      https://github.com/fooplugins/debug-bar-screen-info
- * @version   1.1.5
- * @copyright 2013-2016 FooPlugins LLC
+ * @version   1.2.0
+ * @copyright 2013-2017 FooPlugins LLC
  * @license   http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  */
 
