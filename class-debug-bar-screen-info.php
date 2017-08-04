@@ -61,7 +61,7 @@ class Debug_Bar_Admin_Screen_Info {
 
 		// If the single instance hasn't been set, set it now.
 		if ( null === self::$instance ) {
-			self::$instance = new self;
+			self::$instance = new self();
 		}
 
 		return self::$instance;
@@ -198,8 +198,8 @@ class Debug_Bar_Admin_Screen_Info {
 			$output = '<h2>' . esc_html__( 'No Screen Info Found', 'debug-bar-screen-info' ) . '</h2>';
 		}
 
-		/* translators: %s = the "href" element for the link. */
-		$output .= '<p>' . wp_kses_post( sprintf( __( 'For more information, see the <a %s>Codex on WP_Screen</a> or the <a %s>Developers Reference</a>.', 'debug-bar-screen-info' ), 'href="http://codex.wordpress.org/Class_Reference/WP_Screen" target="_blank"', 'href="https://developer.wordpress.org/reference/classes/wp_screen/" target="_blank"' ) ) . '</p>';
+		/* translators: 1: "href" element for link to the Codex, 2: "href" element for link to the Dev Reference. */
+		$output .= '<p>' . wp_kses_post( sprintf( __( 'For more information, see the <a %1$s>Codex on WP_Screen</a> or the <a %2$s>Developers Reference</a>.', 'debug-bar-screen-info' ), 'href="http://codex.wordpress.org/Class_Reference/WP_Screen" target="_blank"', 'href="https://developer.wordpress.org/reference/classes/wp_screen/" target="_blank"' ) ) . '</p>';
 
 		return $output;
 	}
